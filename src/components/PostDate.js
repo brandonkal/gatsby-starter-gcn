@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   margin: 0 auto 2em;
@@ -13,12 +13,14 @@ const Date = styled.p`
   }
 `;
 
-const PostDate = (props) => {
+const PostDate = props => {
   return (
     <Wrapper>
-      <Date><span>Published:</span> {props.date}</Date>
+      <Date>
+        <span>Published:</span> {props.date}
+      </Date>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default PostDate
+export default PostDate;

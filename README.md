@@ -1,7 +1,9 @@
 # gatsby-starter-gcn
+
 A starter template to build amazing static websites with Gatsby, Contentful and Netlify. Inspired by [gatsby-contentful-starter](https://github.com/contentful-userland/gatsby-contentful-starter).
 
 ## Features
+
 * Contentful integration with ready to go placeholder content
 * Netlify integration including a pre-built contact form
 * Minimal responsive design - made to customize or tear apart
@@ -9,6 +11,7 @@ A starter template to build amazing static websites with Gatsby, Contentful and 
 * SEO friendly
 
 ## Demo
+
 https://gcn.netlify.com/
 
 ![](screenshots/demo.jpg)
@@ -16,6 +19,7 @@ https://gcn.netlify.com/
 ## Getting Started
 
 ### Install
+
 ```
 git clone https://github.com/ryanwiemer/gatsby-starter-gcn.git
 npm i
@@ -33,7 +37,7 @@ gatsby new gatsby-starter-gcn https://github.com/ryanwiemer/gatsby-starter-gcn.g
 
 2. `npm run setup`
 
-3. Enter in the requested info for your Contentful space found here: **app.contentful.com** → **Space Settings** → **API keys**  
+3. Enter in the requested info for your Contentful space found here: **app.contentful.com** → **Space Settings** → **API keys**
 
 ## Customization
 
@@ -103,26 +107,26 @@ SPACE_ID
 ### Contentful Webhook (Optional)
 
 1. Navigate to Netlify:
-**Settings** → **Build & Deploy** → **Build hooks**.
-Create a new build hook.
+   **Settings** → **Build & Deploy** → **Build hooks**.
+   Create a new build hook.
 
 2. Navigate to Contentful:
- **app.contentful.com** → **Space Settings** → **Webhooks**. Create a webhook using the Netlify build URL that you just created
- and configure which events should trigger the build on production. For example the following will rebuild the production website every time a post or page is published, unpublished or deleted:
+   **app.contentful.com** → **Space Settings** → **Webhooks**. Create a webhook using the Netlify build URL that you just created
+   and configure which events should trigger the build on production. For example the following will rebuild the production website every time a post or page is published, unpublished or deleted:
 
 ![](screenshots/contentful-webhook-selected-events.jpg)
-
 
 ### Netlify Form Notifications (Optional)
 
 1. Navigate to Netlify:
-**Forms** → **Notifications**
+   **Forms** → **Notifications**
 
 2. Click the add notification dropdown and select your desired notification method.
 
 ![](screenshots/netlify-form-notifcations.jpg)
 
 ## Useful Tips
+
 * If you make edits to your Contentful space while running `gatsby develop` you will need to stop it and rerun the command to see the changes reflected. For example a new post or page will not automatically show up until the website has been rebuilt.
 
 * Currently this template assumes you have at least **one page**, **one post** and **one tag** in Contentful. If you do not the website will fail to build.
