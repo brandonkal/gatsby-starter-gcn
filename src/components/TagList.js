@@ -1,21 +1,21 @@
-import React from 'react'
-import styled from 'styled-components'
-import Link from 'gatsby-link'
+import React from "react";
+import styled from "styled-components";
+import Link from "gatsby-link";
 
 const List = styled.ul`
   margin: 0 auto 2em auto;
   max-width: ${props => props.theme.sizes.maxWidthCentered};
-`
+`;
 
 const Tag = styled.li`
   display: inline-block;
   a {
-    transition: .2s;
+    transition: 0.2s;
     background: ${props => props.theme.colors.tertiary};
-    padding: .5em;
+    padding: 0.5em;
     border-radius: 2px;
     text-transform: capitalize;
-    margin: 0 .5em 0 0;
+    margin: 0 0.5em 0 0;
     text-decoration: none;
     color: ${props => props.theme.colors.base};
     border: 1px solid ${props => props.theme.colors.secondary};
@@ -23,18 +23,18 @@ const Tag = styled.li`
       background: ${props => props.theme.colors.secondary};
     }
   }
-`
+`;
 
-const TagList = (props) => {
+const TagList = props => {
   return (
     <List>
-      {props.tags.map( tag => (
+      {props.tags.map(tag => (
         <Tag key={tag.id}>
           <Link to={`/tag/${tag.slug}/`}>{tag.title}</Link>
         </Tag>
       ))}
     </List>
-  )
-}
+  );
+};
 
-export default TagList
+export default TagList;
