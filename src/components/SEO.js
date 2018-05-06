@@ -15,7 +15,7 @@ class SEO extends Component {
         postNode.metaDescription === null
           ? postNode.body.childMarkdownRemark.excerpt
           : postNode.metaDescription
-      image = postNode.heroImage.sizes.src
+      image = 'https:' + postNode.heroImage.sizes.src
       postURL = config.siteUrl + '/' + postPath
     } else {
       title = config.siteTitle
@@ -60,6 +60,10 @@ class SEO extends Component {
             '@type': 'ImageObject',
             url: image,
           },
+          author: config.author,
+          datePublished: postNode.publishDate,
+          publisher: config.author,
+          mainEntityOfPage: postURL,
           description,
         }
       )
@@ -79,7 +83,7 @@ class SEO extends Component {
         <meta property="og:title" content={title} />
         {postSEO ? <meta property="og:type" content="article" /> : null}
         <meta property="og:url" content={postSEO ? postURL : config.siteUrl} />
-        {postSEO ? <meta property="og:image" content={image} /> : null}
+        <meta property="og:image" content={image} />
         <meta property="og:description" content={description} />
 
         {/* Twitter Card tags */}
