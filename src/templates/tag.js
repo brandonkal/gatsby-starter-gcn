@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import sortBy from 'lodash/sortBy'
 import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
@@ -6,6 +6,7 @@ import Card from '../components/Card'
 import CardList from '../components/CardList'
 import PageTitle from '../components/PageTitle'
 import Container from '../components/Container'
+import jim from 'jim'
 
 const TagTemplate = ({ data }) => {
   const { title, slug } = data.contentfulTag
@@ -22,6 +23,7 @@ const TagTemplate = ({ data }) => {
         />
         <meta property="og:url" content={`${config.siteUrl}/tag/${slug}/`} />
       </Helmet>
+      <ABC />
 
       <Container>
         <PageTitle small>Tag: &ldquo;{title}&rdquo;</PageTitle>
