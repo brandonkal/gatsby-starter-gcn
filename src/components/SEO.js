@@ -23,6 +23,9 @@ class SEO extends Component {
       title = config.siteTitle
       description = config.siteDescription
       image = config.siteLogo
+      imgWidth = 512
+      imgHeight = 512
+      pageUrl = config.siteUrl
     }
     if (postSEO) {
       image = 'https:' + postNode.heroImage.ogimg.src
@@ -114,8 +117,11 @@ class SEO extends Component {
         {/* OpenGraph tags */}
         <meta property="og:title" content={title} />
         {postSEO ? <meta property="og:type" content="article" /> : null}
-        <meta property="og:url" content={postSEO ? pageUrl : config.siteUrl} />
+
+        <meta property="og:url" content={pageUrl} />
         <meta property="og:image" content={image} />
+        <meta property="og:image:width" content={imgWidth} />
+        <meta property="og:image:height" content={imgHeight} />
         <meta property="og:description" content={description} />
 
         {/* Twitter Card tags */}
