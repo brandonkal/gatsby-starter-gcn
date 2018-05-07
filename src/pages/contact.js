@@ -4,7 +4,6 @@ import config from '../utils/siteConfig'
 import Container from '../components/Container'
 import PageTitle from '../components/PageTitle'
 import ContactForm from '../components/ContactForm'
-import SEO from '../components/SEO'
 
 const Contact = ({ data }) => {
   return (
