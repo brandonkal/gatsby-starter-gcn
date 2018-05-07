@@ -47,7 +47,7 @@ const Footer = () => (
       <Item>
         <a
           href="https://www.contentful.com/"
-          rel="nofollow noopener noreferrer"
+          rel="nofollow"
           target="_blank"
         >
           <img
