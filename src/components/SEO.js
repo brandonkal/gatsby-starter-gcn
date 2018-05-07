@@ -4,27 +4,30 @@ import config from '../utils/siteConfig'
 
 class SEO extends Component {
   render() {
-    const { postNode, postPath, postSEO, pageSEO } = this.props
+    const { postNode, pagePath, postSEO, pageSEO } = this.props
     let title
     let description
     let image
     let imgWidth
     let imgHeight
-    let postUrl
-    if (postSEO) {
+    let pageUrl
+    if (postSEO || pageUrl) {
       title = postNode.title
       description =
         postNode.metaDescription === null
           ? postNode.body.childMarkdownRemark.excerpt
           : postNode.metaDescription
-      image = 'https:' + postNode.heroImage.ogimg.src
-      imgHeight = postNode.heroImage.ogimg.height
-      imgWidth = postNode.heroImage.ogimg.width
-      postUrl = config.siteUrl + '/' + postPath + '/'
+
+      pageUrl = config.siteUrl + '/' + pagePath + '/'
     } else {
       title = config.siteTitle
       description = config.siteDescription
       image = config.siteLogo
+    }
+    if (pageSEO) {
+      image = 'https:' + postNode.heroImage.ogimg.src
+      imgWidth = postNode.heroImage.ogimg.width
+      imgHeight = postNode.heroImage.ogimg.height
     }
     // Default Website Schema
     const schemaOrgJSONLD = [
@@ -54,7 +57,7 @@ class SEO extends Component {
               '@type': 'ListItem',
               position: 2,
               item: {
-                '@id': postUrl,
+                '@id': pageUrl,
                 name: title,
               },
             },
@@ -63,7 +66,7 @@ class SEO extends Component {
         {
           '@context': 'http://schema.org',
           '@type': 'BlogPosting',
-          url: postUrl,
+          url: pageUrl,
           name: title,
           alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
           headline: title,
@@ -84,7 +87,7 @@ class SEO extends Component {
             url: config.siteUrl,
           },
           datePublished: postNode.publishDateISO,
-          mainEntityOfPage: postUrl,
+          mainEntityOfPage: pageUrl,
         }
       )
     }
@@ -93,7 +96,7 @@ class SEO extends Component {
       schemaOrgJSONLD.push({
         '@context': 'http://schema.org',
         '@type': 'WebPage',
-        url: postUrl,
+        url: pageUrl,
         name: title,
       })
     }
@@ -111,7 +114,7 @@ class SEO extends Component {
         {/* OpenGraph tags */}
         <meta property="og:title" content={title} />
         {postSEO ? <meta property="og:type" content="article" /> : null}
-        <meta property="og:url" content={postSEO ? postUrl : config.siteUrl} />
+        <meta property="og:url" content={postSEO ? pageUrl : config.siteUrl} />
         <meta property="og:image" content={image} />
         <meta property="og:description" content={description} />
 

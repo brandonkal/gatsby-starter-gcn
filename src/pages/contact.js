@@ -4,6 +4,7 @@ import config from '../utils/siteConfig'
 import Container from '../components/Container'
 import PageTitle from '../components/PageTitle'
 import ContactForm from '../components/ContactForm'
+import SEO from '../components/SEO'
 
 const Contact = ({ data }) => {
   return (
@@ -13,6 +14,7 @@ const Contact = ({ data }) => {
         <meta property="og:title" content={`Contact - ${config.siteTitle}`} />
         <meta property="og:url" content={`${config.siteUrl}/contact/`} />
       </Helmet>
+      <SEO pagePath="contact" pageSEO />
 
       <Container>
         <PageTitle>Contact</PageTitle>
