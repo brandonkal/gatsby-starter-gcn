@@ -11,6 +11,16 @@ class SEO extends Component {
     let imgWidth
     let imgHeight
     let pageUrl
+
+    // Set Default OpenGraph Parameters for Fallback
+    title = config.siteTitle
+    description = config.siteDescription
+    image = config.siteUrl + config.siteLogo
+    imgWidth = 512
+    imgHeight = 512
+    pageUrl = config.siteUrl
+
+    // Replace with Page Parameters if post or page
     if (postSEO || pageSEO) {
       title = postNode.title
       description =
@@ -19,19 +29,14 @@ class SEO extends Component {
           : postNode.metaDescription
 
       pageUrl = config.siteUrl + '/' + pagePath + '/'
-    } else {
-      title = config.siteTitle
-      description = config.siteDescription
-      image = config.siteLogo
-      imgWidth = 512
-      imgHeight = 512
-      pageUrl = config.siteUrl
     }
+    // Use Hero Image for OpenGraph
     if (postSEO) {
       image = 'https:' + postNode.heroImage.ogimg.src
       imgWidth = postNode.heroImage.ogimg.width
       imgHeight = postNode.heroImage.ogimg.height
     }
+
     // Default Website Schema
     const schemaOrgJSONLD = [
       {
@@ -42,6 +47,8 @@ class SEO extends Component {
         alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
       },
     ]
+
+    // Blog Post Schema
     if (postSEO) {
       schemaOrgJSONLD.push(
         {
@@ -94,6 +101,7 @@ class SEO extends Component {
         }
       )
     }
+
     // Page SEO Schema
     if (pageSEO) {
       schemaOrgJSONLD.push({
@@ -103,6 +111,7 @@ class SEO extends Component {
         name: title,
       })
     }
+
     return (
       <Helmet>
         {/* General tags */}
