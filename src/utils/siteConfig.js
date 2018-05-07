@@ -2,6 +2,7 @@ module.exports = {
   siteTitle: 'GCN',
   siteTitleAlt: 'GCN', // This allows an alternative site title for SEO schema.
   shortTitle: 'GCN', // Used for App manifest e.g. Mobile Home Screen
+  publisher: 'GCN', // Organization name used for SEO schema
   siteDescription:
     'A starter template to build amazing static websites with Gatsby, Contentful and Netlify',
   siteUrl: 'https://gcn.netlify.com', // Site domain. Do not include a trailing slash! If you wish to use a path prefix you can read more about that here: https://www.gatsbyjs.org/docs/path-prefix/
