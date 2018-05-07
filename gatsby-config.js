@@ -16,13 +16,13 @@ try {
 
 module.exports = {
   siteMetadata: {
-    siteUrl: config.siteUrl,
+    siteURL: config.siteURL,
     rssMetadata: {
-      site_url: config.siteUrl,
-      feed_url: `${config.siteUrl}/rss.xml`,
+      site_url: config.siteURL,
+      feed_url: `${config.siteURL}/rss.xml`,
       title: config.siteTitle,
       description: config.siteDescription,
-      image_url: `${config.siteUrl}${config.siteLogo}`,
+      image_url: `${config.siteURL}${config.siteLogo}`,
       author: config.author,
       copyright: config.copyright,
     },
@@ -31,7 +31,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: config.siteUrl,
+        siteURL: config.siteURL,
       },
     },
     'gatsby-plugin-styled-components',

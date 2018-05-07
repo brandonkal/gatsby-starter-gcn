@@ -16,7 +16,7 @@ class SEO extends Component {
           ? postNode.body.childMarkdownRemark.excerpt
           : postNode.metaDescription
       image = 'https:' + postNode.heroImage.sizes.src
-      postURL = config.siteUrl + '/' + postPath
+      postURL = config.siteUrl + '/' + postPath + '/'
     } else {
       title = config.siteTitle
       description = config.siteDescription
@@ -60,9 +60,18 @@ class SEO extends Component {
             '@type': 'ImageObject',
             url: image,
           },
-          author: config.author,
-          datePublished: postNode.publishDate,
-          publisher: config.author,
+          author: {
+            '@type': 'Person',
+            name: config.author,
+            url: config.authorUrl,
+          },
+          publisher: {
+            '@type': 'Person',
+            name: config.author,
+            url: config.authorUrl,
+          },
+          datePublished: postNode.publishDateISO,
+
           mainEntityOfPage: postURL,
           description,
         }
