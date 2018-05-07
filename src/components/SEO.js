@@ -43,7 +43,7 @@ class SEO extends Component {
               position: 1,
               item: {
                 '@id': config.siteUrl,
-                name: title,
+                name: config.siteTitle,
               },
             },
           ],
@@ -54,13 +54,12 @@ class SEO extends Component {
               item: {
                 '@id': postUrl,
                 name: title,
-                image,
               },
             },
           ],
         },
         {
-          // '@context': 'http://schema.org',
+          '@context': 'http://schema.org',
           '@type': 'BlogPosting',
           url: postUrl,
           name: title,
