@@ -11,7 +11,7 @@ class SEO extends Component {
     let imgWidth
     let imgHeight
     let pageUrl
-    if (postSEO || pageUrl) {
+    if (postSEO || pageSEO) {
       title = postNode.title
       description =
         postNode.metaDescription === null
@@ -24,7 +24,7 @@ class SEO extends Component {
       description = config.siteDescription
       image = config.siteLogo
     }
-    if (pageSEO) {
+    if (postSEO) {
       image = 'https:' + postNode.heroImage.ogimg.src
       imgWidth = postNode.heroImage.ogimg.width
       imgHeight = postNode.heroImage.ogimg.height

@@ -14,7 +14,6 @@ const Contact = ({ data }) => {
         <meta property="og:title" content={`Contact - ${config.siteTitle}`} />
         <meta property="og:url" content={`${config.siteUrl}/contact/`} />
       </Helmet>
-      <SEO pagePath="contact" pageSEO />
 
       <Container>
         <PageTitle>Contact</PageTitle>
