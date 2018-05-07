@@ -4,7 +4,7 @@ import config from '../utils/siteConfig'
 
 class SEO extends Component {
   render() {
-    const { postNode, postPath, postSEO } = this.props
+    const { postNode, postPath, postSEO, pageSEO } = this.props
     let title
     let description
     let image
