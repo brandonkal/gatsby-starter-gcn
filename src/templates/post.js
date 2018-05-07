@@ -65,6 +65,11 @@ export const query = graphql`
         sizes(maxWidth: 1800) {
           ...GatsbyContentfulSizes_withWebp_noBase64
         }
+        ogimg: resize(width: 1800) {
+          src
+          width
+          height
+        }
       }
       body {
         childMarkdownRemark {

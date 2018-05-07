@@ -8,6 +8,8 @@ class SEO extends Component {
     let title
     let description
     let image
+    let imgWidth
+    let imgHeight
     let postUrl
     if (postSEO) {
       title = postNode.title
@@ -15,7 +17,9 @@ class SEO extends Component {
         postNode.metaDescription === null
           ? postNode.body.childMarkdownRemark.excerpt
           : postNode.metaDescription
-      image = 'https:' + postNode.heroImage.sizes.src
+      image = 'https:' + postNode.heroImage.ogimg.src
+      imgHeight = postNode.heroImage.ogimg.height
+      imgWidth = postNode.heroImage.ogimg.width
       postUrl = config.siteUrl + '/' + postPath + '/'
     } else {
       title = config.siteTitle
@@ -28,7 +32,7 @@ class SEO extends Component {
         '@context': 'http://schema.org',
         '@type': 'WebSite',
         url: config.siteUrl,
-        name: title,
+        name: config.siteTitle,
         alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
       },
     ]
@@ -46,8 +50,6 @@ class SEO extends Component {
                 name: config.siteTitle,
               },
             },
-          ],
-          itemListElement: [
             {
               '@type': 'ListItem',
               position: 2,
@@ -68,8 +70,8 @@ class SEO extends Component {
           image: {
             '@type': 'ImageObject',
             url: image,
-            width: 1000,
-            height: 563,
+            width: imgWidth,
+            height: imgHeight,
           },
           author: {
             '@type': 'Person',
@@ -88,28 +90,12 @@ class SEO extends Component {
     }
     // Page SEO Schema
     if (pageSEO) {
-      schemaOrgJSONLD.push(
-        {
-          '@context': 'http://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            {
-              '@type': 'ListItem',
-              position: 1,
-              item: {
-                '@id': postUrl,
-                name: title,
-              },
-            },
-          ],
-        },
-        {
-          '@type': 'WebPage',
-          url: postUrl,
-          name: title,
-          description: description,
-        }
-      )
+      schemaOrgJSONLD.push({
+        '@context': 'http://schema.org',
+        '@type': 'WebPage',
+        url: postUrl,
+        name: title,
+      })
     }
     return (
       <Helmet>
