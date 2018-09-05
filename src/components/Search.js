@@ -67,7 +67,11 @@ export default class Search extends Component {
     if (!query) return []
 
     if (!this.index) this.createIndex()
-    const results = this.index.search(query)
+
+    // set the config
+    const config = {fields: {title: {bool: "AND", expand: true}}}
+    const results = this.index.search(query, config)
+
     return results.map(({ ref }) => this.index.documentStore.getDoc(ref))
   }
 
@@ -80,7 +84,7 @@ export default class Search extends Component {
       <div role="search">
         <SearchBar
           onChange={this.updateQuery}
-          placeholder="search posts"
+          placeholder="search post titles"
           type="search"
           value={query}
         />
